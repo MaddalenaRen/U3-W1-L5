@@ -5,9 +5,14 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from "./Components/Navbar";
 import Footer from './Components/Footer';
 import MovieCarousel from './Components/MovieCarousel';
+import Profilo from "./Components/Profilo";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [selectedGenre, setSelectedGenre] = useState("");
+  const handleSelectChange = (e) => {
+    setSelectedGenre(e.target.value);
+  };
 
   useEffect(() => {
 
@@ -32,8 +37,13 @@ function App() {
           <>
             <div className="d-flex align-items-center flex-wrap mb-3">
               <h2 className="fw-bold text-white p-1 mt-1 fs-4">TV Shows</h2>
-              <select className="form-select form-select-sm w-auto bg-black text-white ms-2" aria-label="Select Genre">
-                <option selected>Genres</option>
+              <select
+                className="form-select form-select-sm w-auto bg-black text-white ms-2"
+                aria-label="Select Genre"
+                value={selectedGenre} // Collegato allo stato
+                onChange={handleSelectChange} // Gestisce il cambiamento
+              >
+                <option value="">Genres</option> {/* Opzione di default con value vuoto */}
                 <option value="1">Azione</option>
                 <option value="2">Anime</option>
                 <option value="3">Commedia</option>
@@ -52,7 +62,12 @@ function App() {
         )}
       </main>
 
+
       <Footer />
+
+      {/* <Profilo /> */}
+
+
     </div>
   );
 }

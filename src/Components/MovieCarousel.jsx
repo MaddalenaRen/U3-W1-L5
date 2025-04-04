@@ -29,7 +29,7 @@ class MovieCarousel extends Component {
       let nextIndex =
         prevState.currentIndex + 5 < prevState.movies.length - 1
           ? prevState.currentIndex + 6
-          : 0; // Non aumentare se siamo all'ultimo film
+          : 0;
 
       if (nextIndex > prevState.movies.length - 6) {
         nextIndex = prevState.movies.length - 6;
@@ -43,7 +43,7 @@ class MovieCarousel extends Component {
   prevSlide = () => {
     this.setState((prevState) => {
       let prevIndex =
-        prevState.currentIndex - 1 >= 0 ? prevState.currentIndex - 6 : prevState.movies.length - 6; // Non diminuire se siamo al primo film
+        prevState.currentIndex - 1 >= 0 ? prevState.currentIndex - 6 : prevState.movies.length - 6;
 
       if (prevIndex < 0) {
         prevIndex = 0;
@@ -57,14 +57,14 @@ class MovieCarousel extends Component {
     const { movies, currentIndex } = this.state;
     const { title } = this.props;
 
-
     return (
       <div className="carousel-container">
         <h2 className="fw-bold text-white p-1 mt-1 fs-4 fs-sm-3 fs-md-2 fs-lg-1">{title}</h2>
-        <div className="carousel my-3">
+        <div className="carousel slide my-3">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <div className="d-flex" style={{ overflowX: "hidden", width: "100%" }}>
+              {/* Aggiungi overflow-auto solo su dispositivi mobili */}
+              <div className="d-flex overflow-auto overflow-lg-hidden" style={{ width: "100%" }}>
                 <div
                   className="d-flex"
                   style={{
@@ -100,7 +100,6 @@ class MovieCarousel extends Component {
             className="carousel-control-next d-none d-md-block"
             type="button"
             onClick={this.nextSlide}
-
           >
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
             <span className="visually-hidden">Next</span>
