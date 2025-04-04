@@ -7,6 +7,13 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-black" >
 
             <div className="container-fluid d-flex align-items-center justify-content-between px-0">
+                <style>{`
+                    @media (max-width: 768px) {
+                    #logoNetflix {
+                    width: 50% !important;
+                            }
+                        }
+                    `}</style>
                 <img
                     src={logo}
                     alt="logo-Netflix"
