@@ -59,12 +59,23 @@ class MovieCarousel extends Component {
 
     return (
       <div className="carousel-container">
+        <style>{`
+          .mobile-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+          }
+          @media (min-width: 768px) {
+            .mobile-scroll {
+              overflow-x: hidden;
+            }
+          }
+        `}</style>
         <h2 className="fw-bold text-white p-1 mt-1 fs-4 fs-sm-3 fs-md-2 fs-lg-1">{title}</h2>
         <div className="carousel slide my-3">
           <div className="carousel-inner">
             <div className="carousel-item active">
               {/* Aggiungi overflow-auto solo su dispositivi mobili */}
-              <div className="d-flex overflow-auto overflow-lg-hidden" style={{ width: "100%" }}>
+              <div className="d-flex mobile-scroll" style={{ width: "100%" }}>
                 <div
                   className="d-flex"
                   style={{
