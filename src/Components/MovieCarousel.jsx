@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Carousel } from "bootstrap";
+import { Link } from "react-router-dom";
 
 class MovieCarousel extends Component {
   state = {
@@ -89,12 +90,18 @@ class MovieCarousel extends Component {
                 >
                   {movies.length > 0 ? (
                     movies.map((movie, index) => (
-                      <img
+                      <Link
                         key={movie.imdbID}
-                        src={movie.Poster}
-                        className="d-block col-6 col-sm-3 col-md-2"
-                        alt={movie.Title}
-                      />
+                        to={`/movie-details/${movie.imdbID}`}
+                        className="d-block col-6 col-sm-3 col-md-2 mx-0"
+                      >
+                        <img
+                          key={movie.imdbID}
+                          src={movie.Poster}
+                          alt={movie.Title}
+                          className="img-fluid"
+                        />
+                      </Link>
                     ))
                   ) : (
                     <p>Loading movies...</p>

@@ -43,7 +43,7 @@ function App() {
           />
           <Route path="/TvShows" element={<TvShows />} />
           <Route path="/Profilo" element={<Profilo />} />
-          <Route path="/MovieDetails" element={<MovieDetails />} />
+          <Route path="/movie-details/:movieId" element={<MovieDetails />} />
         </Routes>
       </main>
       <Footer />
