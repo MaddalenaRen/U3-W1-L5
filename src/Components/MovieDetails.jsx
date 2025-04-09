@@ -15,8 +15,8 @@ const MovieDetails = () => {
     return <p>Loading...</p>;
   }
   return (
-    <div className="movie-details">
-      <h1>Dettagli Film </h1>
+    <div className="movie-details text-center text-white">
+      <h1>{movie.Title} </h1>
     </div>
   );
 };
