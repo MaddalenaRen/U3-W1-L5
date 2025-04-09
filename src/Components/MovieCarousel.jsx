@@ -39,11 +39,13 @@ class MovieCarousel extends Component {
     });
   };
 
-  // Funzione per spostare a sinistra 
+  // Funzione per spostare a sinistra
   prevSlide = () => {
     this.setState((prevState) => {
       let prevIndex =
-        prevState.currentIndex - 1 >= 0 ? prevState.currentIndex - 6 : prevState.movies.length - 6;
+        prevState.currentIndex - 1 >= 0
+          ? prevState.currentIndex - 6
+          : prevState.movies.length - 6;
 
       if (prevIndex < 0) {
         prevIndex = 0;
@@ -70,7 +72,9 @@ class MovieCarousel extends Component {
             }
           }
         `}</style>
-        <h2 className="fw-bold text-white p-1 mt-1 fs-4 fs-sm-3 fs-md-2 fs-lg-1">{title}</h2>
+        <h2 className="fw-bold text-white p-1 mt-1 fs-4 fs-sm-3 fs-md-2 fs-lg-1">
+          {title}
+        </h2>
         <div className="carousel slide my-3">
           <div className="carousel-inner">
             <div className="carousel-item active">
@@ -104,7 +108,10 @@ class MovieCarousel extends Component {
             type="button"
             onClick={this.prevSlide}
           >
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
             <span className="visually-hidden">Previous</span>
           </button>
           <button
@@ -112,7 +119,10 @@ class MovieCarousel extends Component {
             type="button"
             onClick={this.nextSlide}
           >
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
             <span className="visually-hidden">Next</span>
           </button>
         </div>
@@ -122,6 +132,3 @@ class MovieCarousel extends Component {
 }
 
 export default MovieCarousel;
-
-
-

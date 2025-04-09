@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from "./Components/Navbar";
-import Footer from './Components/Footer';
-import MovieCarousel from './Components/MovieCarousel';
+import Footer from "./Components/Footer";
+import MovieCarousel from "./Components/MovieCarousel";
 import Profilo from "./Components/Profilo";
+import { Routes, Route } from "react-router-dom";
+import TvShows from "./Components/TvShows";
+import Home from "./Components/Home";
+import MovieDetails from "./Components/MovieDetails";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [selectedGenre, setSelectedGenre] = useState("");
+
   const handleSelectChange = (e) => {
     setSelectedGenre(e.target.value);
   };
 
   useEffect(() => {
-
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -27,50 +30,25 @@ function App() {
     <div className="d-flex flex-column min-vh-100">
       <Navbar className="py-5" />
       <main className="flex-grow-1 bg-black px-3">
-        {loading ? (
-          <div className="d-flex justify-content-center align-items-center" style={{ height: "60vh" }}>
-            <div className="spinner-border text-light" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
-        ) : (
-          <>
-            <div className="d-flex align-items-center flex-wrap mb-3">
-              <h2 className="fw-bold text-white p-1 mt-1 fs-4">TV Shows</h2>
-              <select
-                className="form-select form-select-sm w-auto bg-black text-white ms-2"
-                aria-label="Select Genre"
-                value={selectedGenre} // Collegato allo stato
-                onChange={handleSelectChange} // Gestisce il cambiamento
-              >
-                <option value="">Genres</option> {/* Opzione di default con value vuoto */}
-                <option value="1">Azione</option>
-                <option value="2">Anime</option>
-                <option value="3">Commedia</option>
-                <option value="4">Cult</option>
-                <option value="5">Documentari</option>
-                <option value="6">Drammatici</option>
-                <option value="7">Fantasy</option>
-                <option value="8">Thriller</option>
-              </select>
-            </div>
-
-            <MovieCarousel listaFilm="Star Wars" title="Star Wars Movies" />
-            <MovieCarousel listaFilm="Harry Potter" title="Harry Potter Movies" />
-            <MovieCarousel listaFilm="Marvel" title="Marvel Movies" />
-          </>
-        )}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                loading={loading}
+                selectedGenre={selectedGenre}
+                handleSelectChange={handleSelectChange}
+              />
+            }
+          />
+          <Route path="/TvShows" element={<TvShows />} />
+          <Route path="/Profilo" element={<Profilo />} />
+          <Route path="/MovieDetails" element={<MovieDetails />} />
+        </Routes>
       </main>
-
-
       <Footer />
-
-      {/* <Profilo /> */}
-
-
     </div>
   );
 }
 
 export default App;
-
